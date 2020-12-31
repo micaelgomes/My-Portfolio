@@ -1,0 +1,50 @@
+{
+  "name": "micael-gomes",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Micael Gomes",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "license": "0BSD",
+  "dependencies": {
+    "@iconscout/react-unicons": "^1.1.6",
+    "add": "^2.0.6",
+    "babel-plugin-styled-components": "^1.12.0",
+    "gatsby": "^2.26.1",
+    "gatsby-image": "^2.8.0",
+    "gatsby-plugin-google-analytics": "^2.8.0",
+    "gatsby-plugin-manifest": "^2.9.1",
+    "gatsby-plugin-nprogress": "^2.7.0",
+    "gatsby-plugin-offline": "^3.7.1",
+    "gatsby-plugin-react-helmet": "^3.7.0",
+    "gatsby-plugin-sharp": "^2.11.2",
+    "gatsby-plugin-styled-components": "^3.7.0",
+    "gatsby-plugin-transition-link": "^1.20.5",
+    "gatsby-source-dribbble": "^2.1.3",
+    "gatsby-source-filesystem": "^2.8.1",
+    "gatsby-transformer-sharp": "^2.9.0",
+    "gsap": "^3.5.1",
+    "polished": "^4.0.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-helmet": "^6.1.0",
+    "react-motion-drawer": "^3.1.0",
+    "react-multi-carousel": "^2.6.1",
+    "styled-components": "^5.2.1",
+    "typeface-lato": "^1.1.13",
+    "yarn": "^1.22.10"
+  },
+  "devDependencies": {
+    "@types/styled-components": "^5.1.7",
+    "gatsby-source-rest-api": "^0.2.3",
+    "prettier": "^2.2.1"
+  }
+}
