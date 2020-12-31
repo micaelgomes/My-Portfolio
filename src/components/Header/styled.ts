@@ -51,7 +51,7 @@ export const NavbarMain = styled.nav`
       margin: 3px;
       transition: 0.2s all ease-in-out;
       border-radius: 3px;
-      border: 2px solid ${darken(0.1, '#8FA842')};
+      border: 2px solid ${darken(0, '#8fa842')};
 
       &:nth-child(1) {
         width: 30px;
@@ -237,7 +237,6 @@ export const OverlaySidebar = styled.a<OverlaySidebarProps>`
   top: 0;
   bottom: 0;
   width: 0;
-  /* right: 500px; */
   z-index: 100000;
   visibility: hidden;
   transition: 0.3s all ease-in-out;

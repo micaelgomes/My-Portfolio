@@ -89,14 +89,22 @@ export const SectionSkills = styled.section`
       margin-left: 4.5rem;
     }
 
-    h4 {
-      margin: 0.5rem 0;
+    h5 {
+      font-weight: 400;
+    }
+
+    small {
       font-weight: bold;
+    }
+
+    p {
+      margin: 1rem 0;
     }
 
     img {
       width: 50px;
       height: 50px;
+      margin-bottom: .5rem;
     }
   }
 `;
@@ -211,7 +219,6 @@ export const SectionDribbble = styled.section`
         }
 
         &::after {
-          /* background-color: ${rgba('#ea4c89', 0.85)}; */
           background-color: ${rgba('#8fa842', 0.85)};
           color: #ffffff;
         }
@@ -279,30 +286,18 @@ export const SectionShowcase = styled.div`
     text-transform: uppercase;
     font-size: 5em;
     font-weight: 900;
-    background-image: linear-gradient(
-      90deg,
-      #afc50f 0%,
-      #8fa842 51.56%,
-      #afc50f 100%
-    );
-    background-size: 100%;
-    background-repeat: repeat;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-background-clip: text;
-    -moz-text-fill-color: transparent;
-    text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
+    color: transparent;
 
     &::before {
       content: attr(data-title);
-      position: absolute;
+      position: relative;
       width: 100%;
       height: 100%;
       -webkit-text-fill-color: ${rgba('#fff', 0.4)};
       -moz-text-fill-color: ${rgba('#fff', 0.4)};
       font-size: 2em;
       margin-top: -80px;
-      margin-left: -30px;
+      margin-left: 0;
       z-index: -5;
       text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
     }
@@ -310,49 +305,93 @@ export const SectionShowcase = styled.div`
 
   section {
     display: flex;
+    flex-direction: column;
 
     #showcase-card {
-      background-color: #f2f2f2;
-      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
-      padding: 1rem;
-      width: 450px;
-      height: 500px;
-      overflow: hidden;
-      border-radius: 5px;
-      margin: 0.5rem;
+      width: 100%;
+      height: auto;
+      margin: 4rem auto;
       display: flex;
-      flex-direction: column;
       justify-content: space-between;
       align-items: center;
       transition: 0.2s all ease-in-out;
       cursor: pointer;
 
-      &:hover {
-        width: 430px;
-        height: 480px;
-
-        img {
-          width: 110%;
-        }
-      }
-
-      h5 {
-        text-transform: uppercase;
-        font-weight: 900;
-        color: ${rgba('#262626', .8)};
-      }
-
-      p {
-        margin: 1rem 0;
-        width: 300px;
-        color: ${rgba('#262626', .8)};
+      &:nth-child(2) {
+        flex-direction: row-reverse;
       }
 
       img {
-        width: 100%;
+        width: 500px;
         height: auto;
         object-fit: cover;
         transition: 0.2s all ease-in-out;
+        flex: 1;
+        flex-grow: 0;
+      }
+
+      div {
+        flex: 1;
+        max-width: 500px;
+
+        h2 {
+          text-transform: uppercase;
+          font-weight: 900;
+          color: ${rgba('#f2f2f2', 1)};
+        }
+
+        p {
+          margin: 2.5rem auto;
+          color: ${rgba('#fff', 1)};
+          font-weight: 500;
+        }
+
+        a {
+          font-weight: bold;
+          color: #fff;
+          text-decoration: none;
+
+          &:hover {
+            span {
+              width: 150px;
+            }
+          }
+
+          span {
+            position: relative;
+            background-color: #fff;
+            width: 50px;
+            height: 3px;
+            margin-bottom: 3px;
+            margin-left: 20px;
+            display: inline-flex;
+            transition: .2s width ease-in-out;
+
+            &::before {
+              content: '';
+              position: absolute;
+              background-color: #fff;
+              width: 10px;
+              height: 3px;
+              transform: rotate(40deg);
+              right: -3px;
+              top: -3px;
+              border-radius: 1px;
+            }
+
+            &::after {
+              content: '';
+              position: absolute;
+              background-color: #fff;
+              width: 10px;
+              height: 3px;
+              transform: rotate(130deg);
+              right: -3px;
+              top: 3px;
+              border-radius: 1px;
+            }
+          }
+        }
       }
     }
   }

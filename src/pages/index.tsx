@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import GlobaStyle from '../styles/global';
 import Layout from '../components/Layout';
 import * as S from '../components/Layout/styled';
@@ -75,6 +75,34 @@ interface RequestDTO {
 
 // markup
 const IndexPage: React.FC = () => {
+  useEffect(() => {
+    const toogleShowcaseColor = () => {
+      if (typeof window !== 'undefined') {
+        const showcaseSection = document.getElementById('showcase-section');
+        console.log(
+          showcaseSection.offsetHeight,
+          showcaseSection.offsetTop,
+          window.pageYOffset,
+        );
+
+        if (
+          window.pageYOffset >= showcaseSection.offsetTop - 200 &&
+          window.pageYOffset <= showcaseSection.offsetTop + 1800
+        ) {
+          document.body.style.backgroundColor = '#8fa842';
+        } else {
+          document.body.style.backgroundColor = '#f2f2f2';
+        }
+      }
+    };
+
+    window.addEventListener('scroll', toogleShowcaseColor);
+
+    return function cleanup() {
+      window.removeEventListener('scroll', toogleShowcaseColor);
+    };
+  });
+
   const data = useStaticQuery<RequestDTO>(graphql`
     query profileInfosAndGetImageHeader {
       file(relativePath: { eq: "boy.png" }) {
@@ -129,7 +157,7 @@ const IndexPage: React.FC = () => {
     responsive: {
       desktop: {
         breakpoint: { max: 3000, min: 1024 },
-        items: 6,
+        items: 4,
         slidesToSlide: 1,
         partialVisibilityGutter: 30,
       },
@@ -236,27 +264,29 @@ const IndexPage: React.FC = () => {
             {skills.map((skill, i) => (
               <div key={i}>
                 <img src={skill.img} alt={skill.name} />
-                <h4>{skill.name}</h4>
-                {/* <p>{skill.content}</p> */}
+                <h5>{skill.title}</h5>
+                <small>{skill.name}</small>
+                <p>{skill.content}</p>
               </div>
             ))}
           </Carousel>
         </S.SectionSkills>
 
-        <S.SectionShowcase>
+        <S.SectionShowcase id="showcase-section">
           <h1 data-title="showcase">Showcase</h1>
 
           <section>
             {showcaseItems.map((item, i) => (
               <div id="showcase-card" key={i}>
+                <img src={item.img} alt={item.name} />
                 <div>
-                  <h5>{item.name}</h5>
+                  <h2>{item.name}</h2>
                   <p>{item.title}</p>
+
+                  <a href={item.url} target="_blank" rel="noopener noreferrer">
+                    Conheça o projeto <span></span>
+                  </a>
                 </div>
-                <img hidden
-                  src={item.img}
-                  alt={item.name}
-                />
               </div>
             ))}
           </section>
