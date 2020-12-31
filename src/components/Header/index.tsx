@@ -54,7 +54,7 @@ const Header: React.FC = ({ children }) => {
 
       <S.Sidebar
         open={opened}
-        width={getLocalWidth()}
+        width={300}
         right={true}
         overlayColor={'transparent'}
         onChange={toogleOpened}
@@ -72,10 +72,9 @@ const Header: React.FC = ({ children }) => {
             </AniLink>
           </li>
           <li>
-            <a>skills</a>
-          </li>
-          <li>
-            <a>contato</a>
+          <AniLink cover to="/about" direction="left" duration={1} bg="#8fa842">
+              contato
+            </AniLink>
           </li>
         </ul>
       </S.Sidebar>

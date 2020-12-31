@@ -3,6 +3,7 @@ import GlobaStyle from '../styles/global';
 import Layout from '../components/Layout';
 import * as S from '../components/Layout/styled';
 import Header from '../components/Header';
+import Helmet from 'react-helmet';
 
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
@@ -20,7 +21,7 @@ import 'react-multi-carousel/lib/styles.css';
 
 interface RequestDTO {
   file: { childImageSharp: { fixed: any } };
-  allRestApiUsersMicaelgoms: {
+  allRestApiUsersMicaelgomes: {
     edges: [
       {
         node: {
@@ -35,21 +36,6 @@ interface RequestDTO {
           followers: string;
           following: string;
           location: string;
-        };
-      },
-    ];
-  };
-  allRestApiUsersMicaelgomsRepos: {
-    edges: [
-      {
-        node: {
-          id: string;
-          name: string;
-          html_url: string;
-          language: string;
-          open_issues_count: string;
-          description: string;
-          stargazers_count: string;
         };
       },
     ];
@@ -112,7 +98,7 @@ const IndexPage: React.FC = () => {
           }
         }
       }
-      allRestApiUsersMicaelgoms {
+      allRestApiUsersMicaelgomes {
         edges {
           node {
             id
@@ -170,7 +156,7 @@ const IndexPage: React.FC = () => {
         breakpoint: { max: 464, min: 0 },
         items: 1,
         slidesToSlide: 1,
-        partialVisibilityGutter: 10,
+        partialVisibilityGutter: 100,
       },
     },
     ssr: true,
@@ -194,6 +180,7 @@ const IndexPage: React.FC = () => {
   return (
     <>
       <GlobaStyle />
+      <Helmet title="Micael Gomes" defer={false} />
       <Layout>
         <Header>
           <div id="intro-text">
@@ -204,7 +191,7 @@ const IndexPage: React.FC = () => {
               Desenvolvedor mobile &amp; web <span></span> Advogando em Desing
               da Experiência do usuário desde de 2018.
             </h4>
-            <button>Download CV</button>
+            <button onClick={() => alert('PDF não adcionado!')}>Download CV</button>
           </div>
 
           <Img fixed={data.file.childImageSharp.fixed} alt="boy drawing" />
@@ -215,7 +202,7 @@ const IndexPage: React.FC = () => {
             <b>GitHub</b> <small>@micaelgoms</small>{' '}
           </h1>
 
-          {data.allRestApiUsersMicaelgoms.edges.map(edge => (
+          {data.allRestApiUsersMicaelgomes.edges.map(edge => (
             <a
               href={edge.node.html_url}
               target="_blank"
@@ -273,7 +260,7 @@ const IndexPage: React.FC = () => {
         </S.SectionSkills>
 
         <S.SectionShowcase id="showcase-section">
-          <h1 data-title="showcase">Showcase</h1>
+          <h1>Showcase</h1>
 
           <section>
             {showcaseItems.map((item, i) => (

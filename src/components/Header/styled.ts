@@ -12,9 +12,14 @@ export const NavbarMain = styled.nav`
   justify-content: space-between;
   align-items: center;
 
-  position: fixed;
+  position: relative;
   width: 100%;
   padding: 1rem;
+  z-index: 1000;
+
+  @media (min-width: 768px) {
+    position: fixed;
+  }
 
   #logo {
     cursor: pointer;
@@ -140,7 +145,7 @@ export const HeaderWrapper = styled.div`
       font-size: 1.1rem;
       font-weight: 600;
       position: relative;
-      transition: .5s all ease-in-out;
+      transition: 0.5s all ease-in-out;
 
       &::before {
         content: '';
@@ -151,7 +156,7 @@ export const HeaderWrapper = styled.div`
         z-index: -5;
         margin-top: -2px;
         margin-left: -10px;
-        transition: .2s all ease-in-out;
+        transition: 0.2s all ease-in-out;
       }
 
       &:hover {
@@ -246,6 +251,6 @@ export const OverlaySidebar = styled.a<OverlaySidebarProps>`
     css`
       background: rgba(0, 0, 0, 0.1);
       visibility: visible;
-      width: calc(100% - 500px);
+      width: calc(100% - 300px);
     `}
 `;

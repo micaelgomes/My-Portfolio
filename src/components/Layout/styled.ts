@@ -19,7 +19,7 @@ export const SectionGitHub = styled.div`
 
   section {
     background-color: #f2f2f2;
-    padding: 1rem 0.5rem;
+    padding: 1rem;
     border-radius: 15px;
     margin: 2rem 0;
     display: flex;
@@ -28,6 +28,10 @@ export const SectionGitHub = styled.div`
     align-items: center;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
     transition: 0.2s transform ease-in-out;
+
+    @media (min-width: 768px) {
+      padding: 1rem 0.5rem;
+    }
 
     &:hover {
       transform: translateY(-5px);
@@ -39,6 +43,7 @@ export const SectionGitHub = styled.div`
       border-radius: 100%;
       box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
       background-color: #a6a6a6;
+      margin: 1rem 0;
     }
 
     #github-infos {
@@ -55,6 +60,11 @@ export const SectionGitHub = styled.div`
 
       div {
         display: flex;
+        flex-direction: column;
+
+        @media (min-width: 768px) {
+          flex-direction: row;
+        }
 
         p {
           color: #a6a6a6;
@@ -104,7 +114,7 @@ export const SectionSkills = styled.section`
     img {
       width: 50px;
       height: 50px;
-      margin-bottom: .5rem;
+      margin-bottom: 0.5rem;
     }
   }
 `;
@@ -281,25 +291,22 @@ export const SectionShowcase = styled.div`
   max-width: 1140px;
 
   h1 {
-    margin-bottom: 2rem;
     position: relative;
-    text-transform: uppercase;
+    width: 100%;
+    height: 100%;
+    -webkit-text-fill-color: ${rgba('#fff', 0.4)};
+    -moz-text-fill-color: ${rgba('#fff', 0.4)};
     font-size: 5em;
+    margin-top: -80px;
+    margin-left: 0;
+    z-index: -5;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
     font-weight: 900;
-    color: transparent;
+    text-align: center;
 
-    &::before {
-      content: attr(data-title);
-      position: relative;
-      width: 100%;
-      height: 100%;
-      -webkit-text-fill-color: ${rgba('#fff', 0.4)};
-      -moz-text-fill-color: ${rgba('#fff', 0.4)};
-      font-size: 2em;
-      margin-top: -80px;
-      margin-left: 0;
-      z-index: -5;
-      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
+    @media (min-width: 768px) {
+      /* text-align: left; */
+      font-size: 10em;
     }
   }
 
@@ -316,18 +323,31 @@ export const SectionShowcase = styled.div`
       align-items: center;
       transition: 0.2s all ease-in-out;
       cursor: pointer;
+      flex-direction: column;
+
+      @media (min-width: 768px) {
+        flex-direction: row;
+      }
 
       &:nth-child(2) {
-        flex-direction: row-reverse;
+        flex-direction: column;
+
+        @media (min-width: 768px) {
+          flex-direction: row-reverse;
+        }
       }
 
       img {
-        width: 500px;
+        width: 400px;
         height: auto;
         object-fit: cover;
         transition: 0.2s all ease-in-out;
         flex: 1;
         flex-grow: 0;
+
+        @media (min-width: 768px) {
+          width: 500px;
+        }
       }
 
       div {
@@ -365,7 +385,7 @@ export const SectionShowcase = styled.div`
             margin-bottom: 3px;
             margin-left: 20px;
             display: inline-flex;
-            transition: .2s width ease-in-out;
+            transition: 0.2s width ease-in-out;
 
             &::before {
               content: '';
