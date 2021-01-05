@@ -9,6 +9,8 @@ import Footer from '../components/Footer';
 
 import { ImageHeader } from '../components/Header/styled';
 
+import resumePdf from '../downloads/micaelgomes.pdf';
+
 const getLocalWidth = () => {
   if (typeof window !== 'undefined') {
     if (window.innerWidth <= 768) {
@@ -60,7 +62,10 @@ const IndexPage: React.FC = () => {
       <GlobaStyle />
       <Helmet>
         <title>Micael Gomes</title>
-        <meta name="description" content="Desenvolvedor mobile &amp; web - Advogando em Desing da Experiência do usuário desde de 2018." />
+        <meta
+          name="description"
+          content="Desenvolvedor mobile &amp; web - Advogando em Desing da Experiência do usuário desde de 2018."
+        />
       </Helmet>
 
       <Header>
@@ -81,7 +86,7 @@ const IndexPage: React.FC = () => {
             Experiência do usuário desde de 2018.
           </h4>
           <a
-            href="/micaelgomes.pdf"
+            href={resumePdf}
             target="_blank"
             rel="noopener noreferrer"
             data-sal="zoom-in"
