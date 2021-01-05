@@ -1,6 +1,7 @@
 import React from 'react';
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import { UilArrowRight } from '@iconscout/react-unicons';
+import { UilCornerDownRightAlt } from '@iconscout/react-unicons';
 
 import * as S from './styled';
 
@@ -34,11 +35,18 @@ const Sidebar: React.FC<SidebarProps> = ({
 
         <ul>
           <li>
+            {window.location.pathname === '/' && (
+              <UilCornerDownRightAlt size={32} color="#fff" />
+            )}
             <AniLink cover to="/" direction="right" duration={1} bg="#8fa842">
               home
             </AniLink>
           </li>
           <li>
+            {window.location.pathname === '/about' && (
+              <UilCornerDownRightAlt size={32} color="#fff" />
+            )}
+
             <AniLink
               cover
               to="/about"

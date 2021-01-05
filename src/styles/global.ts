@@ -65,4 +65,8 @@ export default createGlobalStyle`
   code {
     background: #fff;
   }
+
+  a {
+    color: #8fa842;
+  }
 `;

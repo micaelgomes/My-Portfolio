@@ -1,80 +1,38 @@
 import React, { useEffect } from 'react';
 import GlobaStyle from '../styles/global';
-import Layout from '../components/Layout';
-import * as S from '../components/Layout/styled';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import Helmet from 'react-helmet';
-
-import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
-import { UilMapMarker } from '@iconscout/react-unicons';
-import { UilUsersAlt } from '@iconscout/react-unicons';
-import { UilChatBubbleUser } from '@iconscout/react-unicons';
-import { UilFileUploadAlt } from '@iconscout/react-unicons';
-import { UilBox } from '@iconscout/react-unicons';
+import { graphql, useStaticQuery } from 'gatsby';
 
-import skills from '../content/skills';
-import showcaseItems from '../content/showcase';
-
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import Header from '../components/Header';
+import Body from '../components/Body';
+import Footer from '../components/Footer';
 
 interface RequestDTO {
   file: { childImageSharp: { fixed: any } };
-  allRestApiUsersMicaelgomes: {
-    edges: [
-      {
-        node: {
-          id: string;
-          avatar_url: string;
-          name: string;
-          login: string;
-          public_gists: string;
-          public_repos: string;
-          html_url: string;
-          bio: string;
-          followers: string;
-          following: string;
-          location: string;
-        };
-      },
-    ];
-  };
-  allDribbbleShot: {
-    edges: [
-      {
-        node: {
-          id: string;
-          title: string;
-          url: string;
-          tags: [];
-          localCover: {
-            childImageSharp: {
-              fluid: any;
-            };
-          };
-        };
-      },
-    ];
-  };
 }
 
-// markup
 const IndexPage: React.FC = () => {
+  const data = useStaticQuery<RequestDTO>(graphql`
+    query getImageHeader {
+      file(relativePath: { eq: "boy.png" }) {
+        childImageSharp {
+          fixed(width: 250) {
+            ...GatsbyImageSharpFixed_withWebp_tracedSVG
+          }
+        }
+      }
+    }
+  `);
+
   useEffect(() => {
     const toogleShowcaseColor = () => {
       if (typeof window !== 'undefined') {
         const showcaseSection = document.getElementById('showcase-section');
-        console.log(
-          showcaseSection.offsetHeight,
-          showcaseSection.offsetTop,
-          window.pageYOffset,
-        );
 
         if (
           window.pageYOffset >= showcaseSection.offsetTop - 200 &&
-          window.pageYOffset <= showcaseSection.offsetTop + 1800
+          window.pageYOffset <= showcaseSection.offsetHeight + 1100
         ) {
           document.body.style.backgroundColor = '#8fa842';
         } else {
@@ -90,294 +48,42 @@ const IndexPage: React.FC = () => {
     };
   });
 
-  const data = useStaticQuery<RequestDTO>(graphql`
-    query profileInfosAndGetImageHeader {
-      file(relativePath: { eq: "boy.png" }) {
-        childImageSharp {
-          fixed(width: 250) {
-            ...GatsbyImageSharpFixed_withWebp_tracedSVG
-          }
-        }
-      }
-      allRestApiUsersMicaelgomes {
-        edges {
-          node {
-            id
-            avatar_url
-            name
-            login
-            public_gists
-            public_repos
-            html_url
-            bio
-            followers
-            following
-            location
-          }
-        }
-      }
-      allDribbbleShot {
-        edges {
-          node {
-            id
-            title
-            url
-            tags
-            localCover {
-              childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  `);
-
-  const settings = {
-    swipeable: true,
-    draggable: true,
-    showDots: false,
-    arrows: false,
-    responsive: {
-      desktop: {
-        breakpoint: { max: 3000, min: 1024 },
-        items: 4,
-        slidesToSlide: 1,
-        partialVisibilityGutter: 30,
-      },
-      tablet: {
-        breakpoint: { max: 1024, min: 464 },
-        items: 2,
-        slidesToSlide: 2,
-      },
-      mobile: {
-        breakpoint: { max: 464, min: 0 },
-        items: 1,
-        slidesToSlide: 1,
-        partialVisibilityGutter: 100,
-      },
-    },
-    ssr: true,
-    infinite: true,
-    autoPlaySpeed: 3000,
-    autoPlay: true,
-    // autoPlay: this.props.deviceType !== "mobile" ? true : false,
-    // keyBoardControl: true,
-    // customTransition: "all .5",
-    // transitionDuration: 1000,
-    containerClass: 'carousel-container',
-    removeArrowOnDeviceType: ['tablet', 'mobile'],
-    // deviceType: this.props.deviceType,
-    dotListClass: 'custom-dot-list-style',
-    itemClass: 'carousel-item-padding-40-px',
-    partialVisible: true,
-  };
-
-  data.allDribbbleShot.edges.sort(() => 0.5 - Math.random());
-
   return (
     <>
       <GlobaStyle />
       <Helmet title="Micael Gomes" defer={false} />
-      <Layout>
-        <Header>
-          <div id="intro-text">
-            <h1
-              data-sal="slide-up"
-              data-sal-delay="400"
-              data-sal-easing="easeOutExpo"
-            >
-              sou <b>Micael</b>
-            </h1>
-            <h4
-              data-sal="slide-up"
-              data-sal-delay="500"
-              data-sal-easing="easeOutExpo"
-            >
-              Desenvolvedor mobile &amp; web <span></span> Advogando em Desing
-              da Experiência do usuário desde de 2018.
-            </h4>
-            <button
-              data-sal="zoom-in"
-              data-sal-delay="600"
-              data-sal-easing="easeOutExpo"
-              onClick={() => alert('PDF não adcionado!')}
-            >
-              Download CV
-            </button>
-          </div>
 
-          <Img fixed={data.file.childImageSharp.fixed} alt="boy drawing" />
-        </Header>
-
-        <S.SectionGitHub>
+      <Header>
+        <div id="intro-text">
           <h1
-            data-sal="fade"
-            data-sal-delay="300"
+            data-sal="slide-up"
+            data-sal-delay="400"
             data-sal-easing="easeOutExpo"
           >
-            <b>GitHub</b> <small>@micaelgoms</small>{' '}
+            sou <b>Micael</b>
           </h1>
+          <h4
+            data-sal="slide-up"
+            data-sal-delay="500"
+            data-sal-easing="easeOutExpo"
+          >
+            Desenvolvedor mobile &amp; web <span></span> Advogando em Desing da
+            Experiência do usuário desde de 2018.
+          </h4>
+          <button
+            data-sal="zoom-in"
+            data-sal-delay="600"
+            data-sal-easing="easeOutExpo"
+            onClick={() => alert('PDF não adcionado!')}
+          >
+            Download CV
+          </button>
+        </div>
 
-          {data.allRestApiUsersMicaelgomes.edges.map(edge => (
-            <a
-              href={edge.node.html_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              key={edge.node.id}
-            >
-              <section>
-                <img
-                  loading="lazy"
-                  src={edge.node.avatar_url}
-                  alt={edge.node.name}
-                />
+        <Img fixed={data.file.childImageSharp.fixed} alt="boy drawing" />
+      </Header>
 
-                <div id="github-infos">
-                  <h4>{edge.node.name}</h4>
-                  <small>@{edge.node.login}</small>
-                  <p>{edge.node.bio}</p>
-
-                  <div>
-                    <p>
-                      <UilUsersAlt size={20} /> {edge.node.followers} seguidores
-                    </p>
-                    <p>
-                      <UilChatBubbleUser size={20} /> {edge.node.following}{' '}
-                      seguindo
-                    </p>
-                    <p>
-                      <UilFileUploadAlt size={20} /> {edge.node.public_gists}{' '}
-                      gists
-                    </p>
-                    <p>
-                      <UilBox size={20} /> {edge.node.public_repos} repositórios
-                    </p>
-                    <p id="location">
-                      <UilMapMarker size={20} /> {edge.node.location}
-                    </p>
-                  </div>
-                </div>
-              </section>
-            </a>
-          ))}
-        </S.SectionGitHub>
-
-        <S.SectionSkills
-          data-sal="slide-up"
-          data-sal-delay="300"
-          data-sal-easing="easeOutExpo"
-        >
-          <Carousel {...settings}>
-            {skills.map((skill, i) => (
-              <div key={i}>
-                <img src={skill.img} alt={skill.name} />
-                <h5>{skill.title}</h5>
-                <small>{skill.name}</small>
-                <p>{skill.content}</p>
-              </div>
-            ))}
-          </Carousel>
-        </S.SectionSkills>
-
-        <S.SectionShowcase id="showcase-section">
-          <h1 data-sal="slide-up" data-sal-delay="900" data-sal-easing="ease">
-            Showcase
-          </h1>
-
-          <section>
-            {showcaseItems.map((item, i) => (
-              <div
-                id="showcase-card"
-                key={i}
-                data-sal="zoom-out"
-                data-sal-delay="300"
-                data-sal-easing="easeOutExpo"
-              >
-                <img src={item.img} alt={item.name} />
-                <div>
-                  <h2>{item.name}</h2>
-                  <p>{item.title}</p>
-
-                  <a href={item.url} target="_blank" rel="noopener noreferrer">
-                    Conheça o projeto <span></span>
-                  </a>
-                </div>
-              </div>
-            ))}
-          </section>
-        </S.SectionShowcase>
-
-        <S.SectionFigma>
-          <h1>UX &amp; UI</h1>
-
-          <iframe
-            src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FlIFZOT6yqLWR4szB12uvit%2FPortif%25C3%25B3lio%3Fnode-id%3D224%253A2"
-            allowFullScreen
-          ></iframe>
-
-          <div>
-            <h5>
-              Trabalho com Experiência do usuário desde de 2018, muito
-              influenciado pelo meu hobbe em construir <i>"interfaces"</i> na
-              faculdade. Isso me despertou o interesse em IHC, uma área que me
-              ajudou a entender como um usuário pode interagir com as minhas
-              aplicações.
-            </h5>
-
-            <h5>
-              No meu 1º time, entregar valor muito rápido e validar requisitos
-              antes de começar a fazer código havia se tornado uma necessidade.
-              Uma das formas que encontrei de resolver essa dor foi usando o{' '}
-              <b>Figma</b>. Pode conferir os resultados na secção abaixo.
-            </h5>
-
-            <h5>
-              As imagens abaixo estão na minha conta do <b>dribbble</b>:{' '}
-              <code>@micaelgoms</code> (mesmo @ do figma). Dentre elas possuem
-              projetos comerciais e protótipos de ideias, fique à vontade em
-              codar essas ideias.
-            </h5>
-          </div>
-        </S.SectionFigma>
-
-        <S.SectionDribbble>
-          <h1></h1>
-
-          <section>
-            {data.allDribbbleShot.edges.map(edge => (
-              <a
-                href={edge.node.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                key={edge.node.id}
-              >
-                <div
-                  id="card-dribbble"
-                  data-sal="fade"
-                  data-sal-delay="300"
-                  data-sal-easing="easeOutExpo"
-                  data-title={edge.node.title}
-                >
-                  {edge.node.localCover && (
-                    <Img
-                      fluid={edge.node.localCover.childImageSharp.fluid}
-                      alt={edge.node.title}
-                    />
-                  )}
-                </div>
-              </a>
-            ))}
-          </section>
-        </S.SectionDribbble>
-
-        <S.SectionBonus>
-          <h1>Bônus</h1>
-        </S.SectionBonus>
-      </Layout>
+      <Body />
 
       <Footer />
     </>

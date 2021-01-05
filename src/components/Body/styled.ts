@@ -144,7 +144,6 @@ export const SectionShowcase = styled.div`
     text-align: center;
 
     @media (min-width: 768px) {
-      /* text-align: left; */
       font-size: 10em;
     }
   }
@@ -276,7 +275,7 @@ export const SectionFigma = styled.section`
     &::before {
       content: '';
       position: absolute;
-      width: calc(50% - 100px);
+      width: calc(50% - 200px);
       border-top: 0.01rem solid ${rgba('#a6a6a6', 0.3)};
       left: 0;
       margin-top: 30px;
@@ -286,27 +285,11 @@ export const SectionFigma = styled.section`
     &::after {
       content: '';
       position: absolute;
-      width: calc(50% - 100px);
+      width: calc(50% - 200px);
       border-top: 0.01rem solid ${rgba('#a6a6a6', 0.3)};
       right: 0;
       margin-top: 30px;
       z-index: -1;
-    }
-  }
-
-  div {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-
-    h5 {
-      margin: .3rem;
-      color: #595959;
-      flex: 1;
-      max-width: 500px;
-      min-width: 400px;
-      line-height: 1.5;
-      margin-bottom: 2.5rem;
     }
   }
 

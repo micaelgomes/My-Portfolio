@@ -37,6 +37,14 @@ export const Sidebar = styled(Drawer)`
     li {
       margin: 1rem;
       margin-bottom: 1.5rem;
+      position: relative;
+      transition: .2s all ease;
+
+      svg {
+        position: absolute;
+        left: -38px;
+        top: -4px;
+      }
 
       p {
         color: #f2f2f2;
