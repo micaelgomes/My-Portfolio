@@ -23,7 +23,11 @@ export const HeaderWrapper = styled.div`
     width: 100%;
     height: 125px;
     z-index: -1;
-    margin-top: -300px;
+    margin-top: -400px;
+
+    @media (min-width: 768px) {
+      margin-top: -300px;
+    }
   }
 
   #intro-text {
