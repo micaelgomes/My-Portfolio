@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import GlobaStyle from '../styles/global';
 import Layout from '../components/Layout';
 import * as S from '../components/Layout/styled';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import Helmet from 'react-helmet';
 
 import { graphql, useStaticQuery } from 'gatsby';
@@ -184,21 +185,40 @@ const IndexPage: React.FC = () => {
       <Layout>
         <Header>
           <div id="intro-text">
-            <h1>
+            <h1
+              data-sal="slide-up"
+              data-sal-delay="400"
+              data-sal-easing="easeOutExpo"
+            >
               sou <b>Micael</b>
             </h1>
-            <h4>
+            <h4
+              data-sal="slide-up"
+              data-sal-delay="500"
+              data-sal-easing="easeOutExpo"
+            >
               Desenvolvedor mobile &amp; web <span></span> Advogando em Desing
               da Experiência do usuário desde de 2018.
             </h4>
-            <button onClick={() => alert('PDF não adcionado!')}>Download CV</button>
+            <button
+              data-sal="zoom-in"
+              data-sal-delay="600"
+              data-sal-easing="easeOutExpo"
+              onClick={() => alert('PDF não adcionado!')}
+            >
+              Download CV
+            </button>
           </div>
 
           <Img fixed={data.file.childImageSharp.fixed} alt="boy drawing" />
         </Header>
 
         <S.SectionGitHub>
-          <h1>
+          <h1
+            data-sal="fade"
+            data-sal-delay="300"
+            data-sal-easing="easeOutExpo"
+          >
             <b>GitHub</b> <small>@micaelgoms</small>{' '}
           </h1>
 
@@ -246,7 +266,11 @@ const IndexPage: React.FC = () => {
           ))}
         </S.SectionGitHub>
 
-        <S.SectionSkills>
+        <S.SectionSkills
+          data-sal="slide-up"
+          data-sal-delay="300"
+          data-sal-easing="easeOutExpo"
+        >
           <Carousel {...settings}>
             {skills.map((skill, i) => (
               <div key={i}>
@@ -260,11 +284,19 @@ const IndexPage: React.FC = () => {
         </S.SectionSkills>
 
         <S.SectionShowcase id="showcase-section">
-          <h1>Showcase</h1>
+          <h1 data-sal="slide-up" data-sal-delay="900" data-sal-easing="ease">
+            Showcase
+          </h1>
 
           <section>
             {showcaseItems.map((item, i) => (
-              <div id="showcase-card" key={i}>
+              <div
+                id="showcase-card"
+                key={i}
+                data-sal="zoom-out"
+                data-sal-delay="300"
+                data-sal-easing="easeOutExpo"
+              >
                 <img src={item.img} alt={item.name} />
                 <div>
                   <h2>{item.name}</h2>
@@ -282,11 +314,33 @@ const IndexPage: React.FC = () => {
         <S.SectionFigma>
           <h1>UX &amp; UI</h1>
 
+          <iframe
+            src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FlIFZOT6yqLWR4szB12uvit%2FPortif%25C3%25B3lio%3Fnode-id%3D224%253A2"
+            allowFullScreen
+          ></iframe>
+
           <div>
-            <iframe
-              src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FlIFZOT6yqLWR4szB12uvit%2FPortif%25C3%25B3lio%3Fnode-id%3D224%253A2"
-              allowFullScreen
-            ></iframe>
+            <h5>
+              Trabalho com Experiência do usuário desde de 2018, muito
+              influenciado pelo meu hobbe em construir <i>"interfaces"</i> na
+              faculdade. Isso me despertou o interesse em IHC, uma área que me
+              ajudou a entender como um usuário pode interagir com as minhas
+              aplicações.
+            </h5>
+
+            <h5>
+              No meu 1º time, entregar valor muito rápido e validar requisitos
+              antes de começar a fazer código havia se tornado uma necessidade.
+              Uma das formas que encontrei de resolver essa dor foi usando o{' '}
+              <b>Figma</b>. Pode conferir os resultados na secção abaixo.
+            </h5>
+
+            <h5>
+              As imagens abaixo estão na minha conta do <b>dribbble</b>:{' '}
+              <code>@micaelgoms</code> (mesmo @ do figma). Dentre elas possuem
+              projetos comerciais e protótipos de ideias, fique à vontade em
+              codar essas ideias.
+            </h5>
           </div>
         </S.SectionFigma>
 
@@ -301,17 +355,31 @@ const IndexPage: React.FC = () => {
                 rel="noopener noreferrer"
                 key={edge.node.id}
               >
-                <div id="card-dribbble" data-title={edge.node.title}>
-                  <Img
-                    fluid={edge.node.localCover.childImageSharp.fluid}
-                    alt={edge.node.title}
-                  />
+                <div
+                  id="card-dribbble"
+                  data-sal="fade"
+                  data-sal-delay="300"
+                  data-sal-easing="easeOutExpo"
+                  data-title={edge.node.title}
+                >
+                  {edge.node.localCover && (
+                    <Img
+                      fluid={edge.node.localCover.childImageSharp.fluid}
+                      alt={edge.node.title}
+                    />
+                  )}
                 </div>
               </a>
             ))}
           </section>
         </S.SectionDribbble>
+
+        <S.SectionBonus>
+          <h1>Bônus</h1>
+        </S.SectionBonus>
       </Layout>
+
+      <Footer />
     </>
   );
 };

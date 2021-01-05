@@ -1,10 +1,19 @@
 module.exports = {
   siteMetadata: {
     title: 'Micael Gomes',
-    description: 'Desenvolvedor mobile & web - Advogando em Desing da Experiência do usuário desde de 2018.',
+    description:
+      'Desenvolvedor mobile & web - Advogando em Desing da Experiência do usuário desde de 2018.',
     author: '@micaellgoms',
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-scroll-reveal`,
+      options: {
+        threshold: 1,
+        once: true,
+        disable: false,
+      },
+    },
     'gatsby-plugin-transition-link',
     'gatsby-plugin-styled-components',
     {
@@ -63,7 +72,7 @@ module.exports = {
         background_color: `#f2f2f2`,
         theme_color: `#8fa842`,
         display: `standalone`,
-        icon: `src/images/icon.png`
+        icon: `src/images/icon.png`,
       },
     },
   ],

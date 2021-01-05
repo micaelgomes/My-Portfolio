@@ -1,7 +1,5 @@
 import React from 'react';
 
-const seo: React.FC = () => (
-  <p>works</p>
-)
+const Seo: React.FC = () => <p>works</p>;
 
-export default seo;
+export default Seo;
