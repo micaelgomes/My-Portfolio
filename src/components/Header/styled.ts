@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Img, { GatsbyImageFluidProps } from 'gatsby-image';
 
 export const HeaderWrapper = styled.div`
   position: relative;
@@ -58,7 +59,8 @@ export const HeaderWrapper = styled.div`
       }
     }
 
-    button {
+    a {
+      text-decoration: none;
       background: transparent;
       border: 2px solid #262626;
       padding: 0.5rem 1rem;
@@ -89,5 +91,14 @@ export const HeaderWrapper = styled.div`
         }
       }
     }
+  }
+`;
+
+export const ImageHeader = styled(Img)<GatsbyImageFluidProps>`
+  width: 200px;
+  height: 100%;
+
+  @media (min-width: 768px) {
+    width: 250px;
   }
 `;

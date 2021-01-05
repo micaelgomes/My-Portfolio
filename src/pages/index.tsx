@@ -1,24 +1,31 @@
 import React, { useEffect } from 'react';
 import GlobaStyle from '../styles/global';
 import Helmet from 'react-helmet';
-import Img from 'gatsby-image';
 import { graphql, useStaticQuery } from 'gatsby';
 
 import Header from '../components/Header';
 import Body from '../components/Body';
 import Footer from '../components/Footer';
 
-interface RequestDTO {
-  file: { childImageSharp: { fixed: any } };
-}
+import { ImageHeader } from '../components/Header/styled';
+
+const getLocalWidth = () => {
+  if (typeof window !== 'undefined') {
+    if (window.innerWidth <= 768) {
+      return 1800;
+    } else {
+      return 1100;
+    }
+  }
+};
 
 const IndexPage: React.FC = () => {
-  const data = useStaticQuery<RequestDTO>(graphql`
+  const data = useStaticQuery(graphql`
     query getImageHeader {
       file(relativePath: { eq: "boy.png" }) {
         childImageSharp {
-          fixed(width: 250) {
-            ...GatsbyImageSharpFixed_withWebp_tracedSVG
+          fluid {
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }
@@ -32,7 +39,7 @@ const IndexPage: React.FC = () => {
 
         if (
           window.pageYOffset >= showcaseSection.offsetTop - 200 &&
-          window.pageYOffset <= showcaseSection.offsetHeight + 1100
+          window.pageYOffset <= showcaseSection.offsetHeight + getLocalWidth()
         ) {
           document.body.style.backgroundColor = '#8fa842';
         } else {
@@ -51,7 +58,10 @@ const IndexPage: React.FC = () => {
   return (
     <>
       <GlobaStyle />
-      <Helmet title="Micael Gomes" defer={false} />
+      <Helmet>
+        <title>Micael Gomes</title>
+        <meta name="description" content="Desenvolvedor mobile &amp; web - Advogando em Desing da Experiência do usuário desde de 2018." />
+      </Helmet>
 
       <Header>
         <div id="intro-text">
@@ -70,17 +80,25 @@ const IndexPage: React.FC = () => {
             Desenvolvedor mobile &amp; web <span></span> Advogando em Desing da
             Experiência do usuário desde de 2018.
           </h4>
-          <button
+          <a
+            href="/micaelgomes.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             data-sal="zoom-in"
             data-sal-delay="600"
             data-sal-easing="easeOutExpo"
-            onClick={() => alert('PDF não adcionado!')}
+            onClick={() =>
+              alert('Com grandes poderes vêm grandes responsabilidades.')
+            }
           >
             Download CV
-          </button>
+          </a>
         </div>
 
-        <Img fixed={data.file.childImageSharp.fixed} alt="boy drawing" />
+        <ImageHeader
+          fluid={data.file.childImageSharp.fluid}
+          alt="boy drawing"
+        />
       </Header>
 
       <Body />

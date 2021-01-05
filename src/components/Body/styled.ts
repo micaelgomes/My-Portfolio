@@ -1,16 +1,18 @@
 import styled from 'styled-components';
 import { rgba } from 'polished';
 
-export const LayoutWrapper = styled.main``;
-
 export const SectionGitHub = styled.div`
   position: relative;
   padding-right: 1rem;
   padding-left: 1rem;
-  margin: 0 auto;
+  margin: 5rem auto 0 auto;
 
   width: 100%;
   max-width: 1140px;
+
+  @media (min-width: 768px) {
+    margin-bottom: 0;
+  }
 
   a {
     text-decoration: none;
@@ -135,16 +137,21 @@ export const SectionShowcase = styled.div`
     height: 100%;
     -webkit-text-fill-color: ${rgba('#fff', 0.4)};
     -moz-text-fill-color: ${rgba('#fff', 0.4)};
-    font-size: 5em;
-    margin-top: -80px;
+    font-size: 3.5em;
+    margin-top: 0;
     margin-left: 0;
     z-index: -5;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
     font-weight: 900;
     text-align: center;
 
+    @media (min-width: 425px) {
+      font-size: 5em;
+    }
+
     @media (min-width: 768px) {
       font-size: 10em;
+      margin-top: -80px;
     }
   }
 
@@ -176,12 +183,16 @@ export const SectionShowcase = styled.div`
       }
 
       img {
-        width: 400px;
+        width: 350px;
         height: auto;
         object-fit: cover;
         transition: 0.2s all ease-in-out;
         flex: 1;
         flex-grow: 0;
+
+        @media (min-width: 425px) {
+          width: 400px;
+        }
 
         @media (min-width: 768px) {
           width: 500px;
@@ -269,26 +280,28 @@ export const SectionFigma = styled.section`
   flex-direction: column;
 
   h1 {
-    margin: 0 auto;
     z-index: 5;
+    position: relative;
+    margin-left: 60px;
 
     &::before {
       content: '';
       position: absolute;
-      width: calc(50% - 200px);
-      border-top: 0.01rem solid ${rgba('#a6a6a6', 0.3)};
-      left: 0;
-      margin-top: 30px;
-      z-index: -1;
+      background: url(${require('../../images/tech/figma.svg')}) no-repeat
+        center;
+      background-size: contain;
+      width: 50px;
+      height: 50px;
+      left: -60px;
     }
 
     &::after {
       content: '';
       position: absolute;
-      width: calc(50% - 200px);
+      width: calc(100% - 200px);
       border-top: 0.01rem solid ${rgba('#a6a6a6', 0.3)};
       right: 0;
-      margin-top: 30px;
+      margin-top: 35px;
       z-index: -1;
     }
   }
@@ -430,6 +443,7 @@ export const SectionBonus = styled.div`
     font-weight: 900;
     position: relative;
     text-align: center;
+    margin-bottom: 2.5rem;
 
     &::before {
       content: '';
@@ -451,6 +465,64 @@ export const SectionBonus = styled.div`
       height: 40px;
       margin-left: 16px;
       bottom: 8px;
+    }
+  }
+
+  section {
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    #card-bonus {
+      background-color: #fff;
+      border-radius: 15px;
+      margin: 2rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+      transition: 0.2s transform ease-in-out;
+      cursor: pointer;
+
+      &:hover {
+        transform: translateY(-5px);
+      }
+
+      img {
+        padding: 2rem;
+        width: 100%;
+        height: 100px;
+        border-radius: 15px 15px 0 0;
+
+        &#gofinance {
+          background-color: rgb(86, 54, 211);
+        }
+        &#github {
+          background-color: rgb(58, 58, 58, 0.1);
+        }
+
+        @media (min-width: 768px) {
+          padding: 0.5rem;
+          border-radius: 15px 0 0 15px;
+          width: 200px;
+          height: auto;
+        }
+      }
+
+      div {
+        flex: 1;
+        margin: 1rem;
+
+        @media (min-width: 768px) {
+          margin: 2.5rem;
+        }
+
+        h4 {
+          font-weight: bold;
+          margin-bottom: 0.5rem;
+        }
+      }
     }
   }
 `;

@@ -26,6 +26,11 @@ export const NavbarMain = styled.nav`
       top: 70px;
       margin-left: -25px;
       transition: 0.2s all linear;
+      display: none;
+
+      @media (min-width: 768px) {
+        display: inline;
+      }
     }
 
     &:hover {

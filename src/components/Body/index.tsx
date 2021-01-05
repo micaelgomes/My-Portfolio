@@ -183,11 +183,7 @@ const Body: React.FC = () => {
         ))}
       </S.SectionGitHub>
 
-      <S.SectionSkills
-        data-sal="slide-up"
-        data-sal-delay="300"
-        data-sal-easing="easeOutExpo"
-      >
+      <S.SectionSkills>
         <Carousel {...settings}>
           {skills.map((skill, i) => (
             <div key={i}>
@@ -205,13 +201,7 @@ const Body: React.FC = () => {
 
         <section>
           {showcaseItems.map((item, i) => (
-            <div
-              id="showcase-card"
-              key={i}
-              data-sal="zoom-out"
-              data-sal-delay="200"
-              data-sal-easing="easeOutExpo"
-            >
+            <div id="showcase-card" key={i}>
               <img src={item.img} alt={item.name} />
               <div>
                 <h2>{item.name}</h2>
@@ -237,13 +227,7 @@ const Body: React.FC = () => {
               rel="noopener noreferrer"
               key={edge.node.id}
             >
-              <div
-                id="card-dribbble"
-                data-sal="fade"
-                data-sal-delay="300"
-                data-sal-easing="easeOutExpo"
-                data-title={edge.node.title}
-              >
+              <div id="card-dribbble" data-title={edge.node.title}>
                 {edge.node.localCover && (
                   <Img
                     fluid={edge.node.localCover.childImageSharp.fluid}
@@ -257,7 +241,7 @@ const Body: React.FC = () => {
       </S.SectionDribbble>
 
       <S.SectionFigma>
-        <h1>Prototipação</h1>
+        <h1>figma</h1>
 
         <iframe
           src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FlIFZOT6yqLWR4szB12uvit%2FPortif%25C3%25B3lio%3Fnode-id%3D224%253A2"
@@ -268,6 +252,56 @@ const Body: React.FC = () => {
 
       <S.SectionBonus>
         <h1>Bônus</h1>
+
+        <section>
+          <a
+            href="https://githubexplorer.tk/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div id="card-bonus">
+              <img
+                id="github"
+                src={require('../../images/explorer.svg')}
+                alt="go finances"
+              />
+
+              <div>
+                <h4>GitHub Explorer</h4>
+                <p>
+                  Aplicação feita durante o GoStack, o Bootcamp da Rocketseat™,
+                  que tem como objetivo buscar repositórios usando a REST API
+                  pública do GitHub. É uma aplicação feita em react.js e
+                  Styled-components. Click no Card para acessar o App.
+                </p>
+              </div>
+            </div>
+          </a>
+
+          <a
+            href="https://gofinances.tk"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div id="card-bonus">
+              <img
+                id="gofinance"
+                src={require('../../images/gofinances.svg')}
+                alt="go finances"
+              />
+
+              <div>
+                <h4>Go Finances</h4>
+                <p>
+                  Essa será uma aplicação para exibir as transações financeiras
+                  de entrada e saída em um Banco de Dados Relacional(Postgres
+                  com typeorm). O serviço permitir o cadastro, a listagem de
+                  transações e importação de novos dados a partir de um CSV.
+                </p>
+              </div>
+            </div>
+          </a>
+        </section>
       </S.SectionBonus>
     </>
   );

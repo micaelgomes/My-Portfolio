@@ -38,7 +38,7 @@ export const Sidebar = styled(Drawer)`
       margin: 1rem;
       margin-bottom: 1.5rem;
       position: relative;
-      transition: .2s all ease;
+      transition: 0.2s all ease;
 
       svg {
         position: absolute;
@@ -98,24 +98,4 @@ export const Sidebar = styled(Drawer)`
       }
     }
   }
-`;
-
-export const OverlaySidebar = styled.a<OverlaySidebarProps>`
-  background: transparent;
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 0;
-  z-index: 100000;
-  visibility: hidden;
-  transition: 0.3s all ease-in-out;
-
-  ${props =>
-    props.open &&
-    css`
-      background: rgba(0, 0, 0, 0.1);
-      visibility: visible;
-      width: calc(100% - 500px);
-    `}
 `;

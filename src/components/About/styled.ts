@@ -15,6 +15,11 @@ export const AboutWrapper = styled.div`
     position: relative;
     display: flex;
     align-items: baseline;
+    flex-direction: column;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
 
     &::before {
       content: '';
@@ -28,7 +33,12 @@ export const AboutWrapper = styled.div`
 
     p {
       font-size: 1rem;
-      margin-left: 1rem;
+      margin-left: auto;
+      margin-top: 1rem;
+
+      @media (min-width: 768px) {
+        margin-left: 1rem;
+      }
     }
   }
 
@@ -47,11 +57,14 @@ export const AboutWrapper = styled.div`
     h5 {
       margin: 0.3rem;
       color: #595959;
-      flex: 1;
-      max-width: 500px;
-      min-width: 400px;
+      min-width: 300px;
+      width: 100%;
       line-height: 1.5;
       margin-bottom: 2.5rem;
+
+      @media (min-width: 768px) {
+        width: 500px;
+      }
     }
   }
 `;

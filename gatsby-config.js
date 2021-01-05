@@ -56,7 +56,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Porque tu instalou? 🏠`,
+        name: `Micael Gomes 🙋`,
         short_name: `Micael`,
         start_url: `/`,
         background_color: `#f2f2f2`,

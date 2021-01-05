@@ -18,13 +18,11 @@ const Sidebar: React.FC<SidebarProps> = ({
 }) => {
   return (
     <>
-      <S.OverlaySidebar open={opened} onClick={toogleOpened} />
-
       <S.Sidebar
         open={opened}
         width={widthSidebar}
         right={true}
-        overlayColor={'transparent'}
+        overlayColor={'rgba(0, 0, 0, 0.1)'}
         onChange={toogleOpened}
       >
         <div>
@@ -39,7 +37,7 @@ const Sidebar: React.FC<SidebarProps> = ({
               window.location.pathname === '/' && (
                 <UilCornerDownRightAlt size={32} color="#fff" />
               )}
-            <AniLink cover to="/" direction="right" duration={1} bg="#8fa842">
+            <AniLink cover to="/" direction="right" duration={0.5} bg="#8fa842">
               home
             </AniLink>
           </li>
@@ -53,7 +51,7 @@ const Sidebar: React.FC<SidebarProps> = ({
               cover
               to="/about"
               direction="left"
-              duration={1}
+              duration={0.5}
               bg="#8fa842"
             >
               sobre
