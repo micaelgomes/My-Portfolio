@@ -25,10 +25,11 @@ module.exports = {
     'gatsby-plugin-transition-link',
     'gatsby-plugin-styled-components',
     {
-      resolve: 'gatsby-plugin-google-analytics',
+      resolve: 'gatsby-plugin-gtag',
       options: {
         trackingId: 'G-P1TVES968V',
         head: true,
+        anonymize: true,
       },
     },
     'gatsby-plugin-sharp',
