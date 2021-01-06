@@ -7,6 +7,14 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-hotjar`,
+      options: {
+        includeInDevelopment: false,
+        id: 2183527,
+        sv: 6,
+      },
+    },
+    {
       resolve: `gatsby-plugin-scroll-reveal`,
       options: {
         threshold: 1,
