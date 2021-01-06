@@ -10,7 +10,7 @@ module.exports = {
       resolve: 'gatsby-plugin-google-gtag',
       options: {
         trackingIds: [
-          'G-96NKBDGMJK',
+          'G-P1TVES968V',
         ],
         gtagConfig: {
           optimize_id: 'GTM-M8CQ9QX',
