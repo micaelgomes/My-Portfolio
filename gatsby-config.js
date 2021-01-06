@@ -7,10 +7,21 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: 'gatsby-plugin-google-analytics',
+      resolve: 'gatsby-plugin-google-gtag',
       options: {
-        trackingId: 'G-P1TVES968V',
-        head: true,
+        trackingIds: [
+          'G-96NKBDGMJK',
+        ],
+        gtagConfig: {
+          optimize_id: 'GTM-M8CQ9QX',
+          anonymize_ip: true,
+          cookie_expires: 0,
+        },
+        pluginConfig: {
+          head: true,
+          // respectDNT: true,
+          // exclude: ['/preview/**', '/do-not-track/me/too/'],
+        },
       },
     },
     {
