@@ -7,6 +7,13 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: 'G-P1TVES968V',
+        head: true,
+      },
+    },
+    {
       resolve: `gatsby-plugin-hotjar`,
       options: {
         includeInDevelopment: false,
@@ -24,14 +31,6 @@ module.exports = {
     },
     'gatsby-plugin-transition-link',
     'gatsby-plugin-styled-components',
-    {
-      resolve: 'gatsby-plugin-gtag',
-      options: {
-        trackingId: 'G-P1TVES968V',
-        head: true,
-        anonymize: true,
-      },
-    },
     'gatsby-plugin-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-offline',
@@ -51,9 +50,14 @@ module.exports = {
       __key: 'images',
     },
     {
-      resolve: 'gatsby-source-rest-api',
+      resolve: 'gatsby-source-multi-api',
       options: {
-        endpoints: ['https://api.github.com/users/micaelgomes'],
+        apis: [
+          {
+            prefix: 'RestApi',
+            baseUrl: 'https://api.github.com/users/micaelgomes',
+          },
+        ],
       },
     },
     {

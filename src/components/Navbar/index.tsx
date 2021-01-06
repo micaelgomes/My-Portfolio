@@ -11,15 +11,15 @@ interface NavbarProps {
   toogleOpened: any;
 }
 
-const getLocalWidth = () => {
-  if (typeof window !== 'undefined') {
-    if (window.innerWidth <= 768) {
-      return 300;
-    } else {
-      return 500;
-    }
-  }
-};
+// const getLocalWidth = () => {
+//   if (typeof window !== 'undefined') {
+//     if (window.innerWidth <= 768) {
+//       return 300;
+//     } else {
+//       return 500;
+//     }
+//   }
+// };
 
 const Navbar: React.FC<NavbarProps> = ({ opened, toogleOpened }) => {
   const logo = useStaticQuery(graphql`
@@ -52,7 +52,7 @@ const Navbar: React.FC<NavbarProps> = ({ opened, toogleOpened }) => {
 
       <Sidebar
         opened={opened}
-        widthSidebar={getLocalWidth()}
+        widthSidebar={300}
         toogleOpened={toogleOpened}
       />
     </>
